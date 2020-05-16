@@ -138,7 +138,7 @@ with open("halloffame.txt", "r") as f:
 if mines == flags:
     for i, data in enumerate(halloffame):
         if data[1] > IGT:
-            halloffame.insert((name, IGT))
+            halloffame.insert(i, (name, IGT))
             break
 
 print(" +##################+ ")
