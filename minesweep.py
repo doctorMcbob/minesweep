@@ -99,7 +99,7 @@ if __name__ == "__main__":
     else: SCREEN = pygame.display.set_mode((PW * W, PW * H + 32))
     CLOCK = pygame.time.Clock()
     IGT = 0
-    
+
     pygame.display.set_caption("Minesweeping")
 
     x, y = W//2, H//2
@@ -130,7 +130,9 @@ if __name__ == "__main__":
 
 pygame.quit()
 strtime = lambda n: str(n // 60000) +":"+ ("0" + str(n // 1000 % 60))[-2:]
-if mines == flags: name = input("name\n> ")
+if mines == flags:
+    print(IGT)
+    name = input("name\n> ")
 
 with open("halloffame.txt", "r") as f:
     halloffame = eval(f.read())
@@ -140,6 +142,8 @@ if mines == flags:
         if data[1] > IGT:
             halloffame.insert(i, (name, IGT))
             break
+    else:
+        halloffame.append((name, IGT))
 
 print(" +##################+ ")
 print("+### HALL OF FAME ###+")
@@ -148,4 +152,5 @@ for NAME, TIME in halloffame:
     print(NAME[0:12] + (" " * (12 - len(NAME))) + "|" + (" " * 4) + strtime(TIME))
 
 with open("halloffame.txt", "w") as f:
-    f.write(repr(halloffame))
+    f.write(repr(halloffame[10:]))
+
