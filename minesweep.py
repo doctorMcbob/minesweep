@@ -131,7 +131,6 @@ if __name__ == "__main__":
 pygame.quit()
 strtime = lambda n: str(n // 60000) +":"+ ("0" + str(n // 1000 % 60))[-2:]
 if mines == flags:
-    print(IGT)
     name = input("name\n> ")
 
 with open("halloffame.txt", "r") as f:
@@ -152,5 +151,5 @@ for NAME, TIME in halloffame:
     print(NAME[0:12] + (" " * (12 - len(NAME))) + "|" + (" " * 4) + strtime(TIME))
 
 with open("halloffame.txt", "w") as f:
-    f.write(repr(halloffame[10:]))
+    f.write(repr(halloffame[:10]))
 
